@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Thijs Kurk — Portfolio</title>
+  <meta name="description" content="Portfolio van Thijs Kurk — JavaScript developer en Minecraft plugin maker." />
+  <style>
+    :root{
+      --bg: linear-gradient(135deg,#89f7fe 0%,#66a6ff 100%);
+      --card: rgba(255,255,255,0.15);
+      --glass: rgba(255,255,255,0.1);
+      --text: #0f172a;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;color:var(--text);scroll-behavior:smooth;}
+    body{background:var(--bg);background-attachment:fixed;}
+    header{padding:20px 24px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;backdrop-filter:blur(6px);z-index:999;background:linear-gradient(180deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02));border-bottom:1px solid rgba(0,0,0,0.05)}
+    .logo{font-weight:800;font-size:22px;}
+    nav a{margin-left:14px;text-decoration:none;padding:10px 14px;border-radius:10px;color:inherit;cursor:pointer}
+    nav a.active{background:var(--card)}
+    .container{max-width:1100px;margin:0 auto;padding:60px 24px;min-height:90vh;display:flex;flex-direction:column;justify-content:center}
+    .card{background:var(--glass);padding:28px;border-radius:20px;box-shadow:0 8px 40px rgba(0,0,0,0.12);margin:20px 0}
+    .projects-grid,.highlight-projects{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;margin-top:24px}
+    .project{padding:16px;border-radius:16px;background:linear-gradient(180deg,#ffffff22,#00000008);display:flex;flex-direction:column;justify-content:flex-start;align-items:flex-start}
+    .project h3{margin:8px 0 6px 0}
+    footer{margin-top:36px;padding:18px;text-align:center;opacity:0.9}
+    .page{display:none}
+    .page.active{display:block}
+    .reveal{opacity:0;transform:translateY(24px);transition:all .6s ease}
+    .reveal.show{opacity:1;transform:translateY(0)}
+    form input,form textarea{width:100%;padding:10px;border-radius:10px;margin:6px 0;border:1px solid #ccc;font-size:15px}
+    form button{padding:12px 20px;border-radius:10px;margin-top:10px;border:none;background:#2563eb;color:white;font-size:16px;cursor:pointer}
+    form button:hover{background:#1d4ed8}
+    .time-display{font-size:14px;color:#333;opacity:0.8;margin-top:12px;}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Thijs Kurk</div>
+    <nav>
+      <a data-link="home" class="active">Home</a>
+      <a data-link="projects">Projecten</a>
+      <a data-link="about">Info</a>
+      <a data-link="contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Home -->
+    <section id="home" class="page active container">
+      <div class="card reveal">
+        <h1>Welkom bij mijn portfolio</h1>
+        <p>Ik ben <b>Thijs Kurk</b>, een gepassioneerde <b>JavaScript developer</b> en maker van innovatieve <b>Minecraft plugins</b>. 
+        Met oog voor performance en veiligheid bouw ik oplossingen die de spelervaring verbeteren en servers veiliger maken.</p>
+        <p>Ontdek hieronder een selectie van mijn lopende projecten, leer meer over mij en neem contact op voor samenwerkingen.</p>
+        <div class="time-display reveal">Laatst bijgewerkt: <span id="currentTime"></span></div>
+      </div>
+      <h2 class="reveal">Project Highlights</h2>
+      <div class="highlight-projects" id="home-projects"></div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="page container">
+      <h2 class="reveal">Mijn Projecten</h2>
+      <p class="reveal">Hier vind je een selectie van mijn lopende en toekomstige projecten. Al deze plugins zijn momenteel in ontwikkeling en zullen binnenkort beschikbaar worden gesteld.</p>
+      <div class="projects-grid" id="projects-list"></div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="page container">
+      <h2 class="reveal">Over mij</h2>
+      <div class="card reveal">
+        <p>Mijn naam is <b>Thijs Kurk</b>. Ik ben gespecialiseerd in het ontwikkelen van <b>Minecraft plugins</b> en maatwerk oplossingen met <b>JavaScript</b>. 
+        Mijn focus ligt op het verbeteren van gameplay, server management en het verhogen van veiligheid door geavanceerde anti-cheat systemen.</p>
+        <p>Mijn vaardigheden omvatten:</p>
+        <ul>
+          <li>JavaScript & Node.js ontwikkeling</li>
+          <li>Spigot/Paper plugin development</li>
+          <li>Server automatisering & optimalisatie</li>
+          <li>Anti-cheat & prestatiegerichte systemen</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="page container">
+      <h2 class="reveal">Neem contact op</h2>
+      <div class="card reveal">
+        <p>Heb je interesse in een samenwerking of wil je meer weten over mijn werk? Vul hieronder het formulier in, en ik neem zo snel mogelijk contact met je op.</p>
+        <form action="https://formspree.io/f/xxxx" method="POST">
+          <label>Naam<br><input type="text" name="name" required></label>
+          <label>Email<br><input type="email" name="email" required></label>
+          <label>Bericht<br><textarea name="message" required></textarea></label>
+          <button type="submit">Verstuur bericht</button>
+        </form>
+        <p style="font-size:13px;opacity:0.8">* Dit formulier stuurt je bericht direct naar <b>kurkthijs@gmail.com</b> via Formspree.</p>
+      </div>
+    </section>
+
+    <footer class="card reveal">© 2025 Thijs Kurk — Portfolio</footer>
+  </main>
+
+  <script>
+    const projects=[
+      {title:'AntiCheat',desc:'Detecteert en blokkeert cheaters op Paper/Spigot servers. (Nog niet uitgebracht)'},
+      {title:'AutoBackups',desc:'Automatische wereldbackups met eenvoudige herstelopties. (Nog niet uitgebracht)'},
+      {title:'EconomyPlus',desc:'Schaalbare economy-plugin met shops en transacties. (Nog niet uitgebracht)'},
+      {title:'TeleportManager',desc:'Geavanceerde teleport-opties met cooldowns en permissies. (Nog niet uitgebracht)'},
+      {title:'CustomMobs',desc:'Unieke mobs met aangepaste AI en drops. (Nog niet uitgebracht)'},
+      {title:'VoteRewards',desc:'Beloont spelers voor stemmen op de server. (Nog niet uitgebracht)'},
+      {title:'SkyWarsManager',desc:'SkyWars ervaring met arena’s en matchmaking. (Nog niet uitgebracht)'},
+      {title:'ShopSystem',desc:'GUI-shop systeem voor server-economie. (Nog niet uitgebracht)'},
+      {title:'ClaimProtector',desc:'Land-claim en protectie plugin. (Nog niet uitgebracht)'},
+      {title:'HubScoreboard',desc:'Dynamisch scoreboard voor hubs. (Nog niet uitgebracht)'}
+    ];
+
+    const list=document.getElementById('projects-list');
+    const homeProjects=document.getElementById('home-projects');
+
+    projects.forEach((p,i)=>{
+      // Projecten pagina
+      const d=document.createElement('div');
+      d.className='project reveal';
+      d.innerHTML=`<h3>${p.title}</h3><p>${p.desc}</p>`;
+      list.appendChild(d);
+
+      // Home pagina highlight (eerste 3 projecten)
+      if(i<3){
+        const h=document.createElement('div');
+        h.className='project reveal';
+        h.innerHTML=`<h3>${p.title}</h3><p>${p.desc}</p>`;
+        homeProjects.appendChild(h);
+      }
+    });
+
+    document.querySelectorAll('nav a').forEach(a=>a.addEventListener('click',ev=>{
+      ev.preventDefault();
+      document.querySelectorAll('.page').forEach(s=>s.classList.remove('active'));
+      document.getElementById(a.dataset.link).classList.add('active');
+      document.querySelectorAll('nav a').forEach(n=>n.classList.remove('active'));
+      a.classList.add('active');
+      window.scrollTo({top:0,behavior:'smooth'});
+    }));
+
+    function reveal(){
+      document.querySelectorAll('.reveal').forEach(el=>{
+        const rect=el.getBoundingClientRect();
+        if(rect.top<window.innerHeight-80){el.classList.add('show');}
+        else{el.classList.remove('show');}
+      });
+    }
+    window.addEventListener('scroll',reveal);
+    window.addEventListener('load',reveal);
+
+    function updateTime(){
+      const now=new Date();
+      document.getElementById('currentTime').innerText=now.toLocaleString('nl-NL', {dateStyle:'full', timeStyle:'short'});
+    }
+    updateTime();
+    setInterval(updateTime,60000);
+  </script>
+</body>
+</html>
+
+
